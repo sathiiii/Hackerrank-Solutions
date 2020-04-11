@@ -9,7 +9,7 @@ def rustMurderer(n, s, roads):
     distance = [1] * n
     notVisited = mainRoads[s]
     visited = set()
-    currentDistance = 2
+    currentDistance = 2 # Since the minimum distance that two vertices in the complement graph can have is 2
     while notVisited:
         for v in notVisited:
             diff = notVisited | mainRoads[v]
