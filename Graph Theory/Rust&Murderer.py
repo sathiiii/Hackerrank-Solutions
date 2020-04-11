@@ -6,7 +6,7 @@ def rustMurderer(n, s, roads):
         mainRoads[u].add(v)
         mainRoads[v].add(u)
 
-    distance = [1] * n
+    distance = [1] * n  # As the graph is provided to be sparse there may be many disconnected nodes to the source (village roads)
     notVisited = mainRoads[s]
     visited = set()
     currentDistance = 2 # Since the minimum distance that two vertices in the complement graph can have is 2
