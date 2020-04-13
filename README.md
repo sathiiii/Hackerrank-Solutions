@@ -1,1 +1,1 @@
-# Hackerrank-Solutions
+# Hackerrank solutions for Practice problems - Algorithms category.
