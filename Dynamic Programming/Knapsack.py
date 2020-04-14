@@ -16,7 +16,7 @@
                                 for item -> 0,...,n - 1
     (05). Original problem: dp[k]
     
-    Time Complexity: O(n(k + 1)) ~= O(nk)
+    Time Complexity: O(n(k + 1)) ~= O(mk) ; m <= n
 '''
 
 def unboundedKnapsack(k, items):
