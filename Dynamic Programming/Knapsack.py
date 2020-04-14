@@ -20,6 +20,9 @@
 '''
 
 def unboundedKnapsack(k, items):
+    # Since the same item can be repeatedly appear in the given list, extract only the unique items. This makes the algorithm 
+    # more efficient.
+    items = list(set(items))
     n = len(items)
     dp = [0] * (k + 1)
     for capacity in range(k + 1):
