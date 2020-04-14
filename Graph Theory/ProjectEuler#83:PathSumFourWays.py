@@ -1,3 +1,9 @@
+'''
+    Copyright (C) 2020, Sathira Silva
+    Project Euler Problem 83: Path Sum - Four Ways
+    (Implementation of Dijkstra Algorithm steered with A star search)
+'''
+
 from heapq import heappop, heappush
 
 N = int(input())
