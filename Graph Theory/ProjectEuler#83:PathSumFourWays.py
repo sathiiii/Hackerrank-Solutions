@@ -16,7 +16,7 @@ heuristic = [[(2 * (N - 1) + 1 - i - j) for j in range(N)] for i in range(N)]
 # Since the minimum path to (0, 0) from itself is it's cell value.
 weight[0][0] = grid[0][0]
 # The keys of the openList is kept in a Min heap data structure.
-# Keys are a tuples of the f value of (i, j) cell and a unique integer to keep the keys unique for all f values.
+# Keys are tuples of the f value of (i, j) cell and a unique integer to keep the keys unique for all f values.
 # f(i, j) = weight(i, j) + heuristic(i, j)
 keys = [(weight[0][0] + heuristic[0][0], 0)]
 # openList contains all the cells that have been processed and the cell that's currently processing.
