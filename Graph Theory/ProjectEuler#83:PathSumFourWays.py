@@ -25,7 +25,7 @@ adjacentDirections = [(-1, 0), (0, -1), (1, 0), (0, 1)]
 a = 0
 while keys:
     key = heappop(keys)
-    # The cell indices that has the minimum f value is extracted
+    # The cell indices that has the minimum f value is extracted.
     i, j = openList[key]
     closedList[i][j] = 2
     for dx, dy in adjacentDirections:
