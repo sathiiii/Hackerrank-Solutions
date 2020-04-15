@@ -24,7 +24,7 @@
     (01). Subproblem:   dp[i][j] 
                         Number of subsets which gives XOR sum of j, using the numbers in range [3500, i].
                         #subproblems = 1001 * 2 ^ (log2(4500) + 1) = 1001 * 8192
-    (02). Guessing:     dp[i][j] consists of two disjoint subproblems:
+    (02). Guessing:     subsets in dp[i][j] consists of two disjoint subproblems:
                             (1). dp[i - 1][j], i has no effect on XOR sum.
                             (2). dp[i - 1][j ^ i], i has an effect on XOR sum.
                         In the 1st case, dp[i][j] must be dp[i - 1][j] + XORSumOf(even number of i's) (Because XOR sum of even number of
