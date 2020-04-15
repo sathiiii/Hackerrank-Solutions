@@ -12,9 +12,10 @@
 '''
 
 def equal(arr):
-    # Aim for the minimum. Try to get all values to the minimum.
+    # Aim for the minimum (Because that will consume the least number of operations). Try to get all values to the minimum.
     m = min(arr)
     result = float("inf")
+    # But will the minimum always be the optimal solution? Therefore, guess the optimal solution between min and min - 4.
     for offset in range(5):
         operations = 0
         for i in arr:
