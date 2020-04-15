@@ -34,5 +34,48 @@
     (03). Recurrence:   
     (04). Toplogical Order:
     (05). Original Problem: sum(dp[-1][j] for all j if j is prime)
+    
+    The code passed all test cases when ran on pypy 2. Some of the test cases times out in python 3 and pypy 3.
 '''
 
+from sys import stdin
+from collections import Counter
+
+def primeXor(a):
+    global isPrime, maxXORsum
+    nWays = 0
+    mod = 7 + 10 ** 9
+    frequency = Counter(a)
+    uniques = list(set(a))
+    dp = [[0] * (maxXORsum + 1) for _ in range(len(uniques) + 1)]
+    dp[0][0] = 1
+
+    for i in range(1, len(uniques) + 1):
+        for j in range(maxXORsum + 1):
+            dp[i][j] = (dp[i - 1][j] * ((frequency[uniques[i - 1]] + 2) // 2) + dp[i - 1][uniques[i - 1] ^ j] * ((frequency[uniques[i - 1]] + 1) // 2)) % mod
+    for j in range(maxXORsum + 1):
+        if isPrime[j]:
+            nWays = (nWays + dp[len(uniques)][j]) % mod
+    return nWays
+
+if __name__ == '__main__':
+    q = int(stdin.readline().strip())
+
+    # maxXORsum = 1 << (math.log(4500, 2) + 1)
+    maxXORsum = 8191
+
+    isPrime = [True] * (maxXORsum + 1)
+    isPrime[0] = isPrime[1] = False
+    p = 2
+    while (p * p <= maxXORsum):
+        if isPrime[p]:
+            for i in range(p * p, maxXORsum + 1, p):
+                isPrime[i] = False
+        p += 1
+    
+    for q_itr in range(q):
+        n = int(stdin.readline().strip())
+
+        a = list(map(int, stdin.readline().strip().split()))
+
+        print primeXor(a)
