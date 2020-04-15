@@ -8,6 +8,9 @@
     the second sibling has no other cities directly connected to it.
     Given a map of the kingdom's n cities, find and print the number of ways King Arthur can divide it between his two children such that 
     they will not invade each other. As this answer can be quite large, it must be modulo 7 + 10 ^ 9.
+    
+    Approach:   We have to find the number of ways of colouring subtrees such that its root node has the same colour as the subtree.
+                This can be easily done with Dynamic Programming and DFS traversal to find the subtrees.
 '''
 
 from collections import defaultdict
