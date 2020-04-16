@@ -19,7 +19,8 @@
                 when each city is added to a disjoint subset, if the disjoint subset already contains a machine I mark the dp values to
                 be 1 of those cities.
                 
-                Time Complexity: O(logn) - Due to the find operation. Union operation only takes O(1). 
+                Time Complexity: O(mlogn) in the worst case - Due to the find operation + traversing over the edges. Union operation 
+                only takes O(1). 
 '''
 
 from collections import defaultdict
