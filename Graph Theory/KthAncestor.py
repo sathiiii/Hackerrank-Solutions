@@ -18,12 +18,12 @@
                 Depth of a vertex:  The depth of a vertex u in a tree T is denoted as depth(u) and it's the level in which it's located,
                 starting from depth(root) = 0 i.e. depth(u) = #edges on the shortest path from root to u.
                 
-                Example: Suppose node 0 is the root.
-                                                  0             Node |  0  |  1  |  2  |  3  |  4  |  5  |
-                                                /   \           Depth|  0  |  1  |  2  |  1  |  2  |  2  |  
-                                               1     3
+                Example: Suppose node 1 is the root.
+                                                  1             Node |  1  |  2  |  3  |  4  |  5  |  6  |
+                                                /   \           Depth|  0  |  1  |  1  |  2  |  2  |  2  |  
+                                               2     3
                                               / \    |
-                                             2   4   5
+                                             5   6   4
                 
                 Descendant:   A descendant node of a node is any node in the path from that node to the leaf node (including the leaf 
                 node). The immediate descendant of a node is the “child” node.
