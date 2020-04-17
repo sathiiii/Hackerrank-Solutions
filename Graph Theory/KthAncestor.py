@@ -53,4 +53,9 @@
                         (1). Table Algorithm    (O(n^2) time for preprocessing, O(1) time for answer a query)
                         (2). Jump - Pointer Algorithm   (O(nlogn) time for preprocessing, O(logn) for answer a query)
                         (3). Ladder Algorithm   (O(n) time for preprocessing, O(logn) time for answer a query)
+                        
+                Table Algorithm is a naive approach using Dynamic Programming to fill a table: table[i][j] which is the ancestor of
+                node j at depth i therefore the table will be n x n in size.
+                
+                But I've used the Jump - Pointer Algorithm for this problem.
 '''
