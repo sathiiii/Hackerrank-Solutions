@@ -63,3 +63,95 @@
                 
                 But I've used the Jump - Pointer Algorithm for this problem.
 '''
+
+import math
+from collections import defaultdict
+from sys import stdin, stdout
+
+
+class Graph:
+    def __init__(self):
+        self.edges = defaultdict(list)
+        self.root = None
+
+    def add(self, node, parent):
+        if parent == 0:
+            self.root = node
+            self.edges[node] = []
+        else:
+            self.edges[parent].append(node)
+            self.edges[node] = []
+
+    def bfs(self, tree):
+        tree.add(self.root, 0)
+        visited = {x: False for x in self.edges.keys()}
+        queue = [self.root]
+        while queue:
+            u = queue.pop(0)
+            for v in self.edges[u]:
+                if not visited[v]:
+                    tree.add(v, u)
+                    queue.append(v)
+                    visited[u] = True
+
+
+class Tree:
+    def __init__(self):
+        self.root = None
+        self.parents = defaultdict(list)
+        self.depth = defaultdict(int)
+
+    def add(self, node, parent):
+        if parent == 0:
+            self.root = node
+            self.depth[node] = 0
+            return
+        self.parents[node].append(parent)
+        ancestors = self.parents[parent]
+        depth = 0
+        while len(ancestors) > depth:
+            p = ancestors[depth]
+            self.parents[node].append(p)
+            ancestors = self.parents[p]
+            depth += 1
+        self.depth[node] = self.depth[parent] + 1
+
+    def find(self, node, kthAncestor):
+        if node not in self.parents.keys():
+            return 0
+        if kthAncestor > self.depth[node]:
+            return 0
+        ancestor = 0
+        ancestors = self.parents[node]
+        # Binary Search
+        while kthAncestor > 0:
+            k = int(math.floor(math.log(kthAncestor, 2)))
+            ancestor = ancestors[k]
+            ancestors = self.parents[ancestor]
+            kthAncestor = kthAncestor - (1 << k)
+        return ancestor
+
+    def delete(self, node):
+        if node == self.root:
+            self.root = None
+        del self.parents[node]
+
+
+T = int(stdin.readline())
+for _0 in range(T):
+    P = int(stdin.readline())
+    t = Tree()
+    g = Graph()
+    for _1 in range(P):
+        x, y = list(map(int, stdin.readline().split()))
+        g.add(x, y)
+    g.bfs(t)
+    queries = int(stdin.readline())
+    for _2 in range(queries):
+        query = list(map(int, stdin.readline().split()))
+        if query[0] == 0:
+            t.add(query[2], query[1])
+        if query[0] == 1:
+            t.delete(query[1])
+        if query[0] == 2:
+            stdout.write(str(t.find(query[1], query[2])) + '\n')
