@@ -9,8 +9,8 @@
     Susan likes to play with graphs and Tree data structure is one of her favorites. She has designed a problem and wants to know if 
     anyone can solve it. Sometimes she adds or removes a leaf node. Your task is to figure out the Kth parent of a node at any instant.
     
-    Approach:   This problem is a famous Graph Theory problem and is known as the "Level Ancestor Query problem". First of all we have to
-                know some definitions about Tree Data Structure. 
+    Approach:   This problem is a famous Graph Theory problem and is known as the "Level Ancestor Query problem". (Actually, this's a
+                variant of the Level Ancestor Problem) First of all we have to know some definitions about Tree Data Structure. 
                 
                 What is a Tree? As the problem states, a Tree is an un-directed connected graph. Therefore, if the tree has P nodes,
                 it has P - 1 edges. A rooted tree is a tree which has an arbitrary vertex as the root.
@@ -47,4 +47,10 @@
                 LA_T(u, K) = 0, if such an ancestor doesn’t exist.
                 
                 NOTE:   LA_T (u, root) = u and LA_T (u, depth(u)) = root ∀u ∈ V.
+                
+                
+                There're three different Algorithms to solve the Level Ancestor Problem:
+                        (1). Table Algorithm
+                        (2). Jump - Pointer Algorithm
+                        (3). Ladder Algorithm
 '''
