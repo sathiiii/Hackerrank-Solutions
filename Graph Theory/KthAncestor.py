@@ -61,7 +61,21 @@
                 Table Algorithm is a naive approach using Dynamic Programming to fill a table: table[i][j] which is the ancestor of
                 node j at depth i therefore the table will be n x n in size.
                 
-                But I've used the Jump - Pointer Algorithm for this problem.
+                But I've used the Jump-Pointer Algorithm for this problem because O(nlogn) + O(logn) time is sufficient to pass the
+                test cases. The solution is coded in an object-oriented way for the simplicity.
+                
+                I have created two separate objects as Graph (for graph traversal) and Tree (for the operations in the tree). After the
+                edges of the tree are added to the graph, a Breadth-First Search traversal is done on it to build the Tree by traversing
+                level by level while filling the depth dictionary which contains the depths of each vertex.
+                
+                When queries are asked the find method is called from the Tree object to find the kth ancestor if exists, using the 
+                parents dictionary and the pre-calculated depth dictionary. To find the kth ancestor, according to the Jump-Pointer 
+                Algorithm, the smallest possible k value of the node is calculated, which is: floor(log2(k)). Then, we set the ancestor
+                to be floor(log2(k))th ancestor of the node and parent array of the node to be the parents of the floor(log2(k))th 
+                ancestor. Next, k is reduced by 2^floor(log2(k)). These four steps are repeated until the k value is reached 0 (This
+                is actually a binary search over the ancestors of the node).
+                
+                Time Complexity:   O((n + 1)log(n)) in total.
 '''
 
 import math
@@ -75,6 +89,7 @@ class Graph:
         self.root = None
 
     def add(self, node, parent):
+        # Node is the root of the tree
         if parent == 0:
             self.root = node
             self.edges[node] = []
@@ -82,6 +97,7 @@ class Graph:
             self.edges[parent].append(node)
             self.edges[node] = []
 
+    # Traverse the tree level by level to find the depths of each node with respect to the root of the node.
     def bfs(self, tree):
         tree.add(self.root, 0)
         visited = {x: False for x in self.edges.keys()}
@@ -102,13 +118,16 @@ class Tree:
         self.depth = defaultdict(int)
 
     def add(self, node, parent):
+        # Node is the root of the tree
         if parent == 0:
             self.root = node
+            # Initialize the depth of the root vertex as 0.
             self.depth[node] = 0
             return
         self.parents[node].append(parent)
         ancestors = self.parents[parent]
         depth = 0
+        # Find the depth of the node using the depths of its parents (ancestors).
         while len(ancestors) > depth:
             p = ancestors[depth]
             self.parents[node].append(p)
@@ -117,13 +136,15 @@ class Tree:
         self.depth[node] = self.depth[parent] + 1
 
     def find(self, node, kthAncestor):
-        if node not in self.parents.keys():
+        # Node is the root of the tree or it doesn't exist in the current tree.
+        if not self.parents[node]:
             return 0
+        # Can't find the ancestor of the node because level of the ancestor is less than 0 (below the root).
         if kthAncestor > self.depth[node]:
             return 0
         ancestor = 0
         ancestors = self.parents[node]
-        # Binary Search
+        # Binary Search + Jump-Pointer Algorithm
         while kthAncestor > 0:
             k = int(math.floor(math.log(kthAncestor, 2)))
             ancestor = ancestors[k]
@@ -145,6 +166,7 @@ for _0 in range(T):
     for _1 in range(P):
         x, y = list(map(int, stdin.readline().split()))
         g.add(x, y)
+    # Preprocessing
     g.bfs(t)
     queries = int(stdin.readline())
     for _2 in range(queries):
