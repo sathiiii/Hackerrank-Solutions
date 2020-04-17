@@ -98,7 +98,7 @@ class Graph:
 class Tree:
     def __init__(self):
         self.root = None
-        self.jump_pointer = defaultdict(list)
+        self.parents = defaultdict(list)
         self.depth = defaultdict(int)
 
     def add(self, node, parent):
@@ -106,35 +106,35 @@ class Tree:
             self.root = node
             self.depth[node] = 0
             return
-        self.jump_pointer[node].append(parent)
-        ancestors = self.jump_pointer[parent]
+        self.parents[node].append(parent)
+        ancestors = self.parents[parent]
         depth = 0
         while len(ancestors) > depth:
             p = ancestors[depth]
-            self.jump_pointer[node].append(p)
-            ancestors = self.jump_pointer[p]
+            self.parents[node].append(p)
+            ancestors = self.parents[p]
             depth += 1
         self.depth[node] = self.depth[parent] + 1
 
     def find(self, node, kthAncestor):
-        if node not in self.jump_pointer.keys():
+        if node not in self.parents.keys():
             return 0
         if kthAncestor > self.depth[node]:
             return 0
         ancestor = 0
-        ancestors = self.jump_pointer[node]
+        ancestors = self.parents[node]
         # Binary Search
         while kthAncestor > 0:
             k = int(math.floor(math.log(kthAncestor, 2)))
             ancestor = ancestors[k]
-            ancestors = self.jump_pointer[ancestor]
+            ancestors = self.parents[ancestor]
             kthAncestor = kthAncestor - (1 << k)
         return ancestor
 
     def delete(self, node):
         if node == self.root:
             self.root = None
-        del self.jump_pointer[node]
+        del self.parents[node]
 
 
 T = int(stdin.readline())
