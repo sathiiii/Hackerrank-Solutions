@@ -50,7 +50,7 @@
                 
                 
                 There're three different Algorithms to solve the Level Ancestor Problem:
-                        (1). Table Algorithm
-                        (2). Jump - Pointer Algorithm
-                        (3). Ladder Algorithm
+                        (1). Table Algorithm    (O(n^2) time for preprocessing, O(1) time for answer a query)
+                        (2). Jump - Pointer Algorithm   (O(nlogn) time for preprocessing, O(logn) for answer a query)
+                        (3). Ladder Algorithm   (O(n) time for preprocessing, O(logn) time for answer a query)
 '''
