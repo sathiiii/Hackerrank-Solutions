@@ -9,6 +9,9 @@
     Susan likes to play with graphs and Tree data structure is one of her favorites. She has designed a problem and wants to know if 
     anyone can solve it. Sometimes she adds or removes a leaf node. Your task is to figure out the Kth parent of a node at any instant.
     
+    NOTE:
+    Each node index is any number between 1 and 10^5 i.e., a tree with a single node can have its root indexed as 10^5.
+    
     Approach:   This problem is a famous Graph Theory problem and is known as the "Level Ancestor Query problem". (Actually, this's a
                 variant of the Level Ancestor Problem) First of all we have to know some definitions about Tree Data Structure. 
                 
