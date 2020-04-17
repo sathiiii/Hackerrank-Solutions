@@ -10,8 +10,7 @@
     
     Approach:   The idea is to traverse over the edges and partition the kingdom into disjoint subsets of cities which only contain 
                 either one or no machine in each partitioned subset. Because, since their is an unique path between any pair of cities 
-                any pair of machines can join forces. That also implies that the given graph is a tree. Therefore, the graph is
-                connected and acyclic. When we're trying to join a city into an existing disjoint subset of a kingdom, if
+                any pair of machines can join forces. When we're trying to join a city into an existing disjoint subset of a kingdom, if
                 both the city and the subset contain a machine we destroy the edge connecting that city to the subset. Since we need
                 to find the minimum time to destroy the roads, we have to sort the edges (or roads) in decending order with respect
                 to the time it takes to destroy each road. I've used Union-Find Algorithm for making the disjoint subsets. 
