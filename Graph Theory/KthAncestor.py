@@ -31,7 +31,7 @@
                 Deepest descendant:   Let v be a descendant of the vertex u in a tree T and Pv the path from u to v (which is unique).
                 Then v is the deepest descendant of u if and only if |Pv| >= |Px| for all descendants x of u.
                 
-                Heigh of a vertex:    The height of a vertex u in a tree T, denoted as height(u), is the number of levels we have to go 
+                Height of a vertex:    The height of a vertex u in a tree T, denoted as height(u), is the number of levels we have to go 
                 through, if we want to travel from u to one of its deepest descendants (which is a leaf). Note that here, the leaves 
                 are defined to have height 1. i.e. height(u) = #vertices on the path from u to one of its deepest descendants
                 
