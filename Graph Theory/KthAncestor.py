@@ -13,7 +13,7 @@
     Each node index is any number between 1 and 10^5 i.e., a tree with a single node can have its root indexed as 10^5.
     
     Approach:   This problem is a famous Graph Theory problem and is known as the "Level Ancestor Query problem". (Actually, this's a
-                variant of the Level Ancestor Problem) Before proceed any further, understanding the problem and it's solution require
+                variant of the Level Ancestor Problem) Before proceeding any further, understanding the problem and it's solution require
                 some definitions about Tree Data Structure.
                 
                 What is a Tree? As the problem states, a Tree is an un-directed connected graph. Therefore, if the tree has P nodes,
