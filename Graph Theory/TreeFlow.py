@@ -1,3 +1,11 @@
+'''
+    Copyright (C) 2020, Sathira Silva.
+    
+    Problem Statement:  https://www.hackerrank.com/challenges/tree-flow
+    
+    Approach:   https://www.hackerrank.com/challenges/tree-flow/forum/comments/751083
+'''
+
 from collections import defaultdict
 from sys import stdin, stdout
 from heapq import heappop, heappush
