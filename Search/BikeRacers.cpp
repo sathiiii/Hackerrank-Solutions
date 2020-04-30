@@ -25,7 +25,10 @@ using namespace std;
 
 typedef long long int lli;
 int n, m, k;
+// d[i][j] : Euclidean squared distance from ith biker to kth bike.
+// augDistance[u] : Distance of the current augmenting path to vertex u.
 lli d[251][251], augDistance[251];
+// Initially unmatched vertices in each partite to store the matches.
 int unmatchedBikers[251], unmatchedBikes[251];
 vector<int> biGraph[251];
 const lli INF = 2e9;
