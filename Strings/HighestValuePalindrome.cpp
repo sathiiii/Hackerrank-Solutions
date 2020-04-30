@@ -18,7 +18,7 @@ using namespace std;
 string highestValuePalindrome(string s, int n, int k) {
     int changes = 0;
     bool change[n];
-    // Traverse the string upto n / 2th index, front and end pair wise (s[i] and s[n - i - 1]).
+    // Traverse the string upto n / 2, front and end pair wise (s[i] and s[n - i - 1]).
     // First copy the large digit to the other in the pair if they're not equal and if there're more moves left.
     for (int i = 0; i < n / 2; i++) {
         if (s[i] != s[n - i - 1]) {
