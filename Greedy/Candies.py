@@ -9,7 +9,7 @@
     Approach:   Since each child must get at least one candy, give one candy per child initially. Then traverse the children starting from
                 the 1st index and give them one more candy if that child's rating is higher than the previous child. Then traverse the
                 children backwards starting from the child before the last index and compare the child's rating with the child sitting
-                next to him. If that child's rating is higher than the child sitting next to him, make a greedy choice to give a candies
+                next to him. If that child's rating is higher than the child sitting next to him, make a greedy choice to give candies
                 to him i.e. if the child has candies more than the next child, don't give any candies to him. Otherwise get all the candies
                 he currently has and give him candies one more than the amount of the next child has.
 '''
